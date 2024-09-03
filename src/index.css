@@ -181,6 +181,7 @@ button:focus-visible {
   color: white;
   padding: 10px 20px;
   width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
+  align-items: CENTER;
 }
 .navbar-title {
   margin-right: 3rem;

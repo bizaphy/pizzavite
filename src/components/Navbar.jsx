@@ -8,7 +8,7 @@ const Navbar = () => {
   const token = false;
 
   const handleButtonClick = () => {
-    navigate("/pizzareact-gitpage/cart");
+    navigate("/cart");
   };
 
   return (
