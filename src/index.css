@@ -22,17 +22,31 @@ a:hover {
   color: #535bf2;
 }
 
+html,
 body {
   margin: 0;
+  height: 100%;
+}
+
+#root {
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
   min-height: 100vh;
+  width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
+}
+
+.content {
+  flex: 1;
+  width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h2 {
+  padding: 1rem;
 }
 
 button {
@@ -65,4 +79,323 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* EXTRA CSS */
+
+/* =================================== */
+/* HOME */
+/* =================================== */
+
+.section-title.available {
+  padding: 5rem 0rem 1rem 0rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.home-container {
+  background-image: url("./assets/img/pizza.jpeg");
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.home-title {
+  font-size: 2rem;
+}
+
+.home-description {
+  font-size: 1.1rem;
+}
+
+/* =================================== */
+/* CARDS */
+/* =================================== */
+
+.cards {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  width: 100%;
+}
+
+.my-card {
+  background-color: rgb(251, 233, 210);
+  width: 100%;
+  max-width: 36rem;
+  flex-grow: 1;
+  margin: 0 1rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: rgb(118, 89, 52);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ingredients {
+  text-align: center;
+  font-weight: 500;
+}
+
+.card-ingredients {
+  color: rgb(92, 92, 92);
+  margin-top: 0rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.card-price {
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.ingredients {
+  margin-bottom: 0rem;
+  font-size: 1.1rem;
+}
+
+.spacing {
+  height: 3rem;
+}
+
+/* =================================== */
+/* NAVBAR */
+/* =================================== */
+
+.navbar-container {
+  display: flex;
+  background-color: #0f0f0f;
+  color: white;
+  padding: 10px 20px;
+  width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
+}
+.navbar-title {
+  margin-right: 3rem;
+  font-size: 1.4rem;
+  padding: 0rem 0.2rem;
+}
+.navbar-cart {
+  margin-left: auto;
+}
+
+/* =================================== */
+/* BOTONES */
+/* =================================== */
+
+.button {
+  background-color: #0f0f0f;
+  border-color: white;
+  margin-right: 0.5rem;
+}
+
+.button-add {
+  color: white;
+  background-color: #242424;
+}
+.button-container {
+  background-color: rgb(59, 59, 59);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+/* =================================== */
+/* FOOTER */
+/* =================================== */
+footer {
+  margin-top: auto;
+  background-color: #0f0f0f;
+  color: rgb(105, 104, 104);
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  width: 100%;
+}
+
+/* =================================== */
+/* FORMULARIO */
+/* =================================== */
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  background-color: WHITE;
+}
+
+.form-title-login,
+.form-title-register {
+  color: rgb(53, 0, 0);
+  padding: 1rem;
+}
+
+.error-msg {
+  color: red;
+}
+
+/* =================================== */
+/* CARRITO */
+/* =================================== */
+.container-carrito {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: bisque;
+}
+
+.cart-item {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.button-cart-container {
+  margin-left: 1rem;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.button-cart {
+  padding: 0.5rem 1rem;
+}
+
+.decrease {
+  color: red;
+}
+
+.quantity-number {
+  font-size: 1.1rem;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.total {
+  padding: 1rem 0rem 1rem 0rem;
+  background-color: #0f0f0f;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.pagar {
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.pagar:hover {
+  background-color: green;
+}
+
+/* ///NEW CARD */
+.newCard {
+  width: 300px;
+  height: auto;
+  margin: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newCard-img {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.newCard p {
+  margin: 10px 0;
+  padding: 0;
+}
+
+.newCard ul {
+  padding: 0;
+  margin: 0;
+}
+
+.newCard li {
+  margin: 5px 0;
+}
+
+/* =================================== */
+/* PROFILE */
+/* =================================== */
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f0f0f0;
+}
+
+.user-info {
+  background-color: #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.user-info p {
+  margin-bottom: 10px;
+}
+
+/* =================================== */
+/* PROFILE */
+/* =================================== */
+
+.error404-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.error404-msj {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* =================================== */
+/* CART */
+/* =================================== */
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
