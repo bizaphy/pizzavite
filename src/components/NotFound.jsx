@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NotFound = () => {
   return (
     <>
@@ -5,15 +7,13 @@ const NotFound = () => {
         <div>
           <p className="error404-title">Error 404</p>
           <p className="error404-msj">
-            No encontrabamos la pagina que buscabas 😢
-            <Link
-                to="/"
-                className="text-white ms-3 text-decoration-none"
-              >
-                Regresar a Home
-              </Link>
+            No encontrabamos la página que buscabas 😢
+            
           </p>
-          
+          <div className="backtohome">         <Link to="/" className="back-home-link">
+            Volver a la página principal
+          </Link></div>
+
         </div>
       </div>
     </>

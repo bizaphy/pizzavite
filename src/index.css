@@ -370,7 +370,7 @@ footer {
 }
 
 /* =================================== */
-/* PROFILE */
+/* not found */
 /* =================================== */
 
 .error404-title {
@@ -387,7 +387,21 @@ footer {
   text-align: center;
   margin-bottom: 40px;
 }
+.backtohome{
+  display: flex;
+  font-size: 18px;
+  color: #666;
+  justify-content: center;
+}
+.back-home-link {
+  color: black;
+  text-decoration: none;
+  font-size: 16px; /* Puedes ajustar el tamaño de fuente según lo necesites */
+}
 
+.back-home-link:hover {
+  text-decoration: underline; /* Agrega un subrayado al pasar el ratón si lo deseas */
+}
 /* =================================== */
 /* CART */
 /* =================================== */
