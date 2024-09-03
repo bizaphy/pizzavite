@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="navbar-title">Pizzeria Mamma Mia!</div>
         <div className="navbar-buttons">
           <Link
-            to="/pizzareact-gitpage/"
+            to="/"
             className="text-white ms-3 text-decoration-none"
           >
             Home
@@ -32,14 +32,14 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/pizzareact-gitpage/profile"
+                to="/profile"
                 className="text-white ms-3 text-decoration-none"
               >
                 Perfil
               </Link>
 
               <Link
-                to="/pizzareact-gitpage/register"
+                to="/register"
                 className="text-white ms-3 text-decoration-none"
               >
                 Registrar
