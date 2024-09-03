@@ -23,7 +23,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/pizza01" element={<Pizza />} />
+          <Route path="/pizza001" element={<Pizza />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
