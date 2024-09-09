@@ -1,11 +1,9 @@
 import React from "react";
+import { useCart } from "../context/cartcontext"; 
 
-const Carrito = ({
-  cart = [],
-  increaseQuantity,
-  decreaseQuantity,
-  calculateTotal,
-}) => {
+const Carrito = () => {
+  const { cart, increaseQuantity, decreaseQuantity, calculateTotal } = useCart(); // Obtenemops cart y fx del contexto
+
   return (
     <div className="cart-container">
       <h2 className="section-title">Carrito</h2>
@@ -36,7 +34,7 @@ const Carrito = ({
               </div>
             </li>
           ))}
-          <div className="total">TOTAL: ${calculateTotal()}</div>
+          <div className="total total--alone">TOTAL: ${calculateTotal()}</div>
           <button className="pagar">PAGAR</button>
         </ul>
       )}
