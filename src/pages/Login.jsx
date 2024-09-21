@@ -7,7 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Estado para el mensaje de error
 
-  const { token, login } = useUser(); // Usamos el contexto para obtener el token y fx login
+  const {token} = useUser(); // Usamos el contexto para obtener el token
 
   // Redireccion si el token es true
   if (token) {
