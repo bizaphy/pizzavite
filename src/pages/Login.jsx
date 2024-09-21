@@ -1,15 +1,22 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useUser } from "../context/userContext"; // Importar el contexto de usuario
 
 const Login = () => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // Estado para el mensaje de error
 
-  // Estado para el mensaje de error
-  const [error, setError] = useState("");
+  const { token, login } = useUser(); // Usamos el contexto para obtener el token y fx login
 
-  // Antes de enviar formulario
+  // Redireccion si el token es true
+  if (token) {
+    return <Navigate to="/" />;
+  }
+
+  // Fx validación y envío del formulario
   const validarDatos = (e) => {
-    e.preventDefault(); // Prevenimos comp. defecto
+    e.preventDefault(); // Prev comportamiento por defecto
 
     // Validación de inputs
     if (!mail.trim() || !password.trim()) {
@@ -17,21 +24,19 @@ const Login = () => {
       return;
     }
     if (password.length < 6) {
-      setError("La password debe ser de al menos 6 caracteres");
+      setError("La contraseña debe ser de al menos 6 caracteres");
       return;
     }
 
-    // Si todas las validaciones pasan, reinicia el formulario
+    // Si todas las valdiaciones pasan, reinicia formulario
     setMail("");
     setPassword("");
-
-    setError(""); // Reiniciar el mensaje de error
+    setError(""); // Reinicia msje de error
   };
 
   return (
     <>
       <form onSubmit={validarDatos} className="form">
-        {/* Usamos un shortcircuit de AND */}
         {error && <p className="error-msg">{error}</p>}
         <h3 className="form-title-login">Login</h3>
         <label htmlFor="email">Correo Electrónico</label>
@@ -48,7 +53,6 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         <button type="submit">Enviar</button>
       </form>
     </>

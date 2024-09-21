@@ -1,8 +1,18 @@
 import React from "react";
 import { useCart } from "../context/cartcontext"; 
+import { useUser } from "../context/userContext";
 
 const Carrito = () => {
   const { cart, increaseQuantity, decreaseQuantity, calculateTotal } = useCart(); // Obtenemops cart y fx del contexto
+  const {token} = useUser(); //Para tener el token
+
+  // const checkPago = () => {
+  //   if (token) {
+  //     console.log('Procesando pago')
+  //   } else {
+  //     alert("Necesitas estar logeado para pagar")
+  //   }
+  // }
 
   return (
     <div className="cart-container">
@@ -25,17 +35,19 @@ const Carrito = () => {
                 >
                   -
                 </button>
-                <button
+                <div
                   className="button-cart decrease"
                   onClick={() => increaseQuantity(pizza.id)}
                 >
                   +
-                </button>
+                </div>
               </div>
             </li>
           ))}
           <div className="total total--alone">TOTAL: ${calculateTotal()}</div>
-          <button className="pagar">PAGAR</button>
+          <button className="pagar" disabled={token ? false : true}>
+            PAGAR
+          </button>
         </ul>
       )}
     </div>

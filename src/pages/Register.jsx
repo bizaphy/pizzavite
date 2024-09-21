@@ -1,9 +1,17 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useUser } from "../context/userContext"; // Importa el contexto de usuario
+
 
 const Register = () => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const { token} = useUser();
+
+  if (token) {
+    return <Navigate to="/" />;
+  }
 
   // Estado para el mensaje de error
   const [error, setError] = useState("");
@@ -11,6 +19,7 @@ const Register = () => {
   // Antes de enviar formulario
   const validarDatos = (e) => {
     e.preventDefault(); // Prevenimos comp. defecto
+    
 
     // Validación de inputs
     if (!mail.trim() || !password.trim() || !confirm.trim()) {

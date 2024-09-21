@@ -180,8 +180,9 @@ button:focus-visible {
   background-color: #0f0f0f;
   color: white;
   padding: 10px 20px;
-  width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
-  align-items: CENTER;
+  width: 100%; 
+  align-items: center;
+
 }
 .navbar-title {
   margin-right: 3rem;
@@ -416,4 +417,21 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+}
+
+/* =================================== */
+/* CARDS CREADAS DESDE PARAMS */
+/* =================================== */
+
+
+.newCard{
+text-align: center;
+background-color: rgb(238, 221, 186);
+margin: 0 auto;
+
+}
+
+
+.logout{
+  cursor: pointer 
 }
