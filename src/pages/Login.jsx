@@ -7,16 +7,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Estado para el mensaje de error
 
-  const {token} = useUser(); // Usamos el contexto para obtener el token
+  const { token, login } = useUser(); // Usamos el contexto para obtener el token y la función login
 
-  // Redireccion si el token es true
+  // Redireccion si el token existe
   if (token) {
     return <Navigate to="/" />;
   }
 
   // Fx validación y envío del formulario
-  const validarDatos = (e) => {
-    e.preventDefault(); // Prev comportamiento por defecto
+  const validarDatos = async (e) => {
+    e.preventDefault(); // Previene comportamiento por defecto
 
     // Validación de inputs
     if (!mail.trim() || !password.trim()) {
@@ -28,10 +28,17 @@ const Login = () => {
       return;
     }
 
-    // Si todas las valdiaciones pasan, reinicia formulario
+    // Llamamos al método login del contexto
+    try {
+      await login(mail, password); // Llamamos a la función login del UserContext
+    } catch (error) {
+      setError("Error en el inicio de sesión. Intenta nuevamente.");
+    }
+
+    // Si todas las validaciones pasan, reinicia el formulario
     setMail("");
     setPassword("");
-    setError(""); // Reinicia msje de error
+    setError(""); // Reinicia el mensaje de error
   };
 
   return (
@@ -46,7 +53,7 @@ const Login = () => {
           value={mail}
           onChange={(e) => setMail(e.target.value)}
         />
-        <label htmlFor="email">Contraseña</label>
+        <label htmlFor="password">Contraseña</label>
         <input
           type="password"
           name="Password"
