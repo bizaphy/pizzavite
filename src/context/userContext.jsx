@@ -87,13 +87,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  // Método para obtener el perfil del usuario autenticado
+  ///////////////////////////////////////////////////////////////////////////////
+  // Fx para PROFILE, paraobtener sus valores
+  ///////////////////////////////////////////////////////////////////////////////
   const getProfile = async () => {
-    // <-- Nuevo método
     try {
-      const token = localStorage.getItem("token"); // Obtén el token desde localStorage si existe
+      const token = localStorage.getItem("token");
       if (!token) throw new Error("No hay token disponible");
-
+      //uso de bearer para autenticar
       const response = await fetch("http://localhost:5000/api/auth/me", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -102,7 +103,7 @@ export const UserProvider = ({ children }) => {
 
       const data = await response.json();
       if (response.ok) {
-        setUserProfile(data); // Almacena los datos del perfil en el estado
+        setUserProfile(data); // guarda datos de perfil en el state
       } else {
         console.error(data?.error || "Error al obtener el perfil");
       }

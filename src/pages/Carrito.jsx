@@ -1,22 +1,48 @@
-import React from "react";
-import { useCart } from "../context/cartcontext"; 
+import React, { useState } from "react";
+import { useCart } from "../context/cartcontext";
 import { useUser } from "../context/userContext";
 
 const Carrito = () => {
-  const { cart, increaseQuantity, decreaseQuantity, calculateTotal } = useCart(); // Obtenemops cart y fx del contexto
-  const {token} = useUser(); //Para tener el token
+  const { cart, increaseQuantity, decreaseQuantity, calculateTotal } =
+    useCart(); // Obtenemos cart y funciones del contexto
+  const { token } = useUser(); // Para obtener el token
+  const [cartMessage, setCartMessage] = useState(""); // Estado para mostrar mensajes de éxito o error
 
-  // const checkPago = () => {
-  //   if (token) {
-  //     console.log('Procesando pago')
-  //   } else {
-  //     alert("Necesitas estar logeado para pagar")
-  //   }
-  // }
+  const handleCheckout = async () => {
+    if (!token) {
+      alert("Debes logearte para poder pagar");
+      return;
+    }
+    try {
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // se envia token con esquema bearer en el encabezado
+        },
+        body: JSON.stringify({
+          items: cart, // Envia items del carrito
+          total: calculateTotal(), // Se envia el total de la compra
+        }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setCartMessage("Compra realizada con éxito");
+      } else {
+        setCartMessage(
+          `Error en la compra: ${data?.error || "Error desconocido"}`
+        );
+      }
+    } catch (error) {
+      console.error("Error en el checkout:", error);
+      setCartMessage("Error en el servidor. Intenta nuevamente.");
+    }
+  };
 
   return (
     <div className="cart-container">
       <h2 className="section-title">Carrito</h2>
+      {cartMessage ? <p>{cartMessage}</p> : null}
       {cart.length === 0 ? (
         <p>No hay pizzas en el carrito.</p>
       ) : (
@@ -45,7 +71,11 @@ const Carrito = () => {
             </li>
           ))}
           <div className="total total--alone">TOTAL: ${calculateTotal()}</div>
-          <button className="pagar" disabled={token ? false : true}>
+          <button
+            className="pagar"
+            onClick={handleCheckout} // CHECKOUT FX
+            disabled={token ? false : true} // Deshabilitar si no hay token
+          >
             PAGAR
           </button>
         </ul>
